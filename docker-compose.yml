@@ -1,0 +1,47 @@
+version: '3.3'
+services:
+  postgres:
+    image: postgres
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+  was:
+    image: ibmcom/websphere-traditional
+    container_name: was
+    ports:
+      - 2809:2809
+      - 9084:9084
+      - 8880:8880
+      - 9100:9100
+      - 9401:9401
+      - 9403:9403
+      - 9402:9402
+      - 9060:9060
+      - 9080:9080
+      - 9353:9353
+      - 9043:9043
+      - 9443:9443
+      - 5060:5060
+      - 5061:5061
+      - 7276:7276
+      - 7286:7286
+      - 5558:5558
+      - 5578:5578
+      - 9633:9633
+      - 11003:11003
+      - 11004:11004
+
+
+volumes:
+  dbdata:
+  ldap_data:
+  ldap_config:
+# this compomse no has it https://thepracticaldeveloper.com/2017/12/11/dockerize-spring-boot/ , but  that exmaple is beautiful because implements scale
+#docker exec was cat /tmp/PASSWORD cKRVGkJo
+#  docker run --name test -h test -p 9043:9043 -p 9443:9443 -d ibmcom/websphere-traditional
+#  docker exec test cat /tmp/PASSWORD
+#  docker logs -f --tail=all test
+#  user wsadmin
